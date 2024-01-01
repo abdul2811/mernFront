@@ -27,6 +27,7 @@ const App = () => {
         phoneService
         .update(foundPerson.id, personObject)
         .then(response => {
+          console.log(response.data)
           setPersons(persons.map(person => person.id !== foundPerson.id ? person : response.data))
           setNewName('')
           setNewNumber('')
@@ -61,6 +62,8 @@ const App = () => {
             setMessage(null)
           }, 5000)
       })
+      .catch(error =>
+        console.log(error.response.data.error))
     }
   }
 
